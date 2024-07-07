@@ -69,11 +69,14 @@ bootBuildImage {
 	environment = ["BP_JVM_VERSION": "17.*"]
 
 	docker {
+        host = "unix:///tmp/podman.sock"
+		bindHostToBuilder = true
+
 		publishRegistry {
 			username = project.findProperty("registryUsername")
 			password = project.findProperty("registryToken")
 			url = project.findProperty("registryUrl")
-		}
+		}        
 	}
 
 	if (System.getProperty( "os.arch" ).toLowerCase().startsWith('aarch')) {
