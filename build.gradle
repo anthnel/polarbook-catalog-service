@@ -46,7 +46,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
-	testImplementation 'org.testcontainers:postgresql'
+	testImplementation 'org.testcontainers:postgresql:1.19.8'
 	testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeycloakVersion}"
 }
 
@@ -69,8 +69,8 @@ bootBuildImage {
 	environment = ["BP_JVM_VERSION": "17.*"]
 
 	docker {
-        host = "unix:///tmp/podman.sock"
-		bindHostToBuilder = true
+        // host = "unix:///run/user/1000/podman/podman.sock"
+		//bindHostToBuilder = true
 
 		publishRegistry {
 			username = project.findProperty("registryUsername")
